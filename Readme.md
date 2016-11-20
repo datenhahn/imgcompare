@@ -10,6 +10,10 @@ is calculated.
 Check the tests to see example diffs for different scenarios. Don't expect the diff of two jpg images be
 the same for the same images converted to png. Don't do interformat compares (e.g. JPG with PNG).
 
+## Dependencies
+
+* Pillow ( )https://python-pillow.org/ )
+
 ## Usage
 
 ### compare images
