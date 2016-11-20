@@ -19,27 +19,29 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-
+import os
 import unittest
 
 from PIL import Image
 
 import imagecompare
 
-PNG_CAT = "test_imagecompare/cat.png"
-PNG_BLACK = "test_imagecompare/black.png"
-PNG_WHITE = "test_imagecompare/white.png"
-PNG_HALF_BW = "test_imagecompare/half_black_white.png"
-PNG_CAT_SLIGHT_DIFF = "test_imagecompare/cat_slight_diff.png"
+dir_path = os.path.dirname(os.path.realpath(__file__))
 
-JPG_CAT = "test_imagecompare/cat.jpg"
-JPG_CAT_BAD_SIZE = "test_imagecompare/cat_bad_size.jpg"
-JPG_CAT_SLIGHT_DIFF = "test_imagecompare/cat_slight_diff.jpg"
-JPG_CAT_DIFFERENT_RUN = "test_imagecompare/cat_jpg_different_run.jpg"
-JPG_CAT_REENCODED = "test_imagecompare/cat_jpg_reencoded.jpg"
-JPG_BLACK = "test_imagecompare/black.jpg"
-JPG_WHITE = "test_imagecompare/white.jpg"
-JPG_HALF_BW = "test_imagecompare/half_black_white.jpg"
+PNG_CAT = dir_path + "/testimages/cat.png"
+PNG_BLACK = dir_path + "/testimages/black.png"
+PNG_WHITE = dir_path + "/testimages/white.png"
+PNG_HALF_BW = dir_path + "/testimages/half_black_white.png"
+PNG_CAT_SLIGHT_DIFF = dir_path + "/testimages/cat_slight_diff.png"
+
+JPG_CAT = dir_path + "/testimages/cat.jpg"
+JPG_CAT_BAD_SIZE = dir_path + "/testimages/cat_bad_size.jpg"
+JPG_CAT_SLIGHT_DIFF = dir_path + "/testimages/cat_slight_diff.jpg"
+JPG_CAT_DIFFERENT_RUN = dir_path + "/testimages/cat_jpg_different_run.jpg"
+JPG_CAT_REENCODED = dir_path + "/testimages/cat_jpg_reencoded.jpg"
+JPG_BLACK = dir_path + "/testimages/black.jpg"
+JPG_WHITE = dir_path + "/testimages/white.jpg"
+JPG_HALF_BW = dir_path + "/testimages/half_black_white.jpg"
 
 black_png = Image.open(PNG_BLACK)
 PNG_BLACK_RGB = black_png.convert('RGB')

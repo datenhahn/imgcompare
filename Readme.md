@@ -40,10 +40,10 @@ or work directly with pillow image instances (also works for is_equal)
 ### Slight Difference
 
 *Image A*
-<img width=150" border="1" src="./test_imagecompare/cat.jpg">
+<img width=150" border="1" src="./tests/testimages/cat.jpg">
 
 *Image B*
-<img width=150" border="1" src="./test_imagecompare/cat_slight_diff.jpg">
+<img width=150" border="1" src="./tests/testimages/cat_slight_diff.jpg">
 
     imagecompare.image_diff_percent(JPG_CAT, JPG_CAT_SLIGHT_DIFF)
 
@@ -52,10 +52,10 @@ or work directly with pillow image instances (also works for is_equal)
 ### Difference between jpg and same jpg encoded again
 
 *Image A*
-<img width=150" border="1" src="./test_imagecompare/cat.jpg">
+<img width=150" border="1" src="./tests/testimages/cat.jpg">
 
 *Image B*
-<img width=150" border="1" src="./test_imagecompare/cat_jpg_reencoded.jpg">
+<img width=150" border="1" src="./tests/testimages/cat_jpg_reencoded.jpg">
 
     imagecompare.image_diff_percent(JPG_CAT, JPG_CAT_REENCODED)
 
@@ -64,10 +64,10 @@ or work directly with pillow image instances (also works for is_equal)
 ### Black and White
 
 *Image A*
-<img width=150" border="1" src="./test_imagecompare/black.jpg">
+<img width=150" border="1" src="./tests/testimages/black.jpg">
 
 *Image B*
-<img width=150" border="1" src="./test_imagecompare/white.jpg">
+<img width=150" border="1" src="./tests/testimages/white.jpg">
 
     imagecompare.image_diff_percent(JPG_BLACK, JPG_WHITE)
 
@@ -76,10 +76,10 @@ or work directly with pillow image instances (also works for is_equal)
 ### Black and Half-Black-White
 
 *Image A*
-<img width=150" border="1" src="./test_imagecompare/black.jpg">
+<img width=150" border="1" src="./tests/testimages/black.jpg">
 
 *Image B*
-<img width=150" border="1" src="./test_imagecompare/half_black_white.jpg">
+<img width=150" border="1" src="./tests/testimages/half_black_white.jpg">
 
     imagecompare.image_diff_percent(JPG_BLACK, JPG_HALF_BW)
 
