@@ -1,4 +1,4 @@
-# imagecompare
+# imgcompare
 
 This little tool compares two images using pillow's ImageChops and then converts the differnce to
 black/white and sums up all found differences by summing up the histogram values of the difference
