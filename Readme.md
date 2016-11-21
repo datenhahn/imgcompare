@@ -51,6 +51,9 @@ or work directly with pillow image instances (also works for is_equal)
 
 ### Difference between jpg and same jpg encoded again
 
+Image B is Image A, but run again through the JPEG encoder, so Image B now
+has slightly more compression artefacts than Image A, which results in a small diff.
+
 *Image A*
 <img width=150" border="1" src="./tests/testimages/cat.jpg">
 
