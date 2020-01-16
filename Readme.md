@@ -45,7 +45,7 @@ or work directly with pillow image instances (also works for is_equal)
 *Image B*
 <img width=150" border="1" src="./tests/testimages/cat_slight_diff.jpg">
 
-    imagecompare.image_diff_percent(JPG_CAT, JPG_CAT_SLIGHT_DIFF)
+    imgcompare.image_diff_percent(JPG_CAT, JPG_CAT_SLIGHT_DIFF)
 
     result => 0.344547385621
 
@@ -60,7 +60,7 @@ has slightly more compression artefacts than Image A, which results in a small d
 *Image B*
 <img width=150" border="1" src="./tests/testimages/cat_jpg_reencoded.jpg">
 
-    imagecompare.image_diff_percent(JPG_CAT, JPG_CAT_REENCODED)
+    imgcompare.image_diff_percent(JPG_CAT, JPG_CAT_REENCODED)
 
     result => 0.0149232026144
     
@@ -72,7 +72,7 @@ has slightly more compression artefacts than Image A, which results in a small d
 *Image B*
 <img width=150" border="1" src="./tests/testimages/white.jpg">
 
-    imagecompare.image_diff_percent(JPG_BLACK, JPG_WHITE)
+    imgcompare.image_diff_percent(JPG_BLACK, JPG_WHITE)
 
     result => 100.0
     
@@ -84,7 +84,7 @@ has slightly more compression artefacts than Image A, which results in a small d
 *Image B*
 <img width=150" border="1" src="./tests/testimages/half_black_white.jpg">
 
-    imagecompare.image_diff_percent(JPG_BLACK, JPG_HALF_BW)
+    imgcompare.image_diff_percent(JPG_BLACK, JPG_HALF_BW)
 
     result => 50.0
     
