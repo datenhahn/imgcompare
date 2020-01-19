@@ -19,6 +19,9 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
+import logging
+import sys
+import uuid
 
 from PIL import Image
 from PIL import ImageChops
@@ -56,7 +59,6 @@ from PIL import ImageChops
 
 """
 
-
 class ImageCompareException(Exception):
     """
     Custom Exception class for imagecompare's exceptions.
@@ -73,6 +75,8 @@ def pixel_diff(image_a, image_b):
     :return: a black/white image containing the differences between A and B
     """
 
+    hash = uuid.uuid4().hex
+
     if image_a.size != image_b.size:
         raise ImageCompareException(
             "different image sizes, can only compare same size images: A=" + str(image_a.size) + " B=" + str(
@@ -84,9 +88,17 @@ def pixel_diff(image_a, image_b):
                 image_b.mode))
 
     diff = ImageChops.difference(image_a, image_b)
-    diff = diff.convert('L')
+    python_version = ".".join([str(a) for a in sys.version_info])
 
-    return diff
+    diff.save("../tmp/" + python_version + "_" + str(hash) + "_raw.bmp")
+
+    diff_converted = diff.convert('L')
+
+    foo = diff_converted.copy()
+
+    diff.save("../tmp/" + python_version + "_" + str(hash) + "_l.bmp")
+
+    return foo
 
 
 def total_histogram_diff(pixel_diff):
@@ -97,6 +109,12 @@ def total_histogram_diff(pixel_diff):
     :param pixel_diff: the black/white image containing all differences (output of imagecompare.pixel_diff function)
     :return: the total "score" of histogram values (histogram values of found differences)
     """
+
+    #pixel_diff_hex = pixel_diff.tobytes().hex()
+    hist = pixel_diff.histogram()
+
+  #  print("diff: " + str(pixel_diff_hex) + "  hist: " + str(hist))
+
     return sum(i * n for i, n in enumerate(pixel_diff.histogram()))
 
 
@@ -146,6 +164,8 @@ def image_diff_percent(image_a, image_b):
     # first determine difference of input images
     input_images_histogram_diff = image_diff(image_a, image_b)
 
+    logging.warning("Histogram DIFF: " + str(input_images_histogram_diff))
+
     # to get the worst possible difference use a black and a white image
     # of the same size and diff them
 
@@ -153,6 +173,9 @@ def image_diff_percent(image_a, image_b):
     white_reference_image = Image.new('RGB', image_a.size, (255, 255, 255))
 
     worst_bw_diff = image_diff(black_reference_image, white_reference_image)
+
+    logging.warning("BW DIFF: " + str(worst_bw_diff))
+
 
     percentage_histogram_diff = (input_images_histogram_diff / float(worst_bw_diff)) * 100
 
