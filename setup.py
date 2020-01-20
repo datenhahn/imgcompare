@@ -2,6 +2,8 @@ from os import path
 
 from setuptools import setup, find_packages
 
+import imgcompare
+
 this_directory = path.abspath(path.dirname(__file__))
 
 with open(path.join(this_directory, 'README.md')) as f:
@@ -10,14 +12,14 @@ with open(path.join(this_directory, 'README.md')) as f:
 setup(
     name='imgcompare',
     packages=find_packages(include=['imgcompare']),
-    version='1.0.0',
+    version=imgcompare.__version__,
     description='compares two images for equality or a difference percentage',
     long_description=long_description,
     long_description_content_type='text/markdown',
     author='Jonas Hahn',
     author_email='jonas.hahn@datenhahn.de',
     url='https://github.com/datenhahn/imgcompare',
-    download_url='https://github.com/datenhahn/imgcompare/tarball/1.0.0',
+    download_url='https://github.com/datenhahn/imgcompare/tarball/' + imgcompare.__version__,
     project_urls={
         'Documentation': 'https://github.com/datenhahn/imgcompare',
         'Source': 'https://github.com/datenhahn/imgcompare',

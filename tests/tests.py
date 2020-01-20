@@ -58,6 +58,9 @@ PNG_HALF_BW_RGB = half_bw.convert('RGB')
 
 class ImageCompareTest(unittest.TestCase):
 
+    def test_version(self):
+        self.assertEqual("1.0.1", imgcompare.__version__)
+
     def test_thresholds(self):
         self.assertEqual(0, imgcompare.image_diff_percent(JPG_BLACK, JPG_BLACK))
         self.assertEqual(100, imgcompare.image_diff_percent(JPG_BLACK, JPG_WHITE))
@@ -104,21 +107,21 @@ class ImageCompareTest(unittest.TestCase):
 
     def test_minimal_image_diff(self):
         # small changes on the image result in a bigger diff than jpg reencode
-        self.assertEqual(0.34,round(imgcompare.image_diff_percent(JPG_CAT, JPG_CAT_SLIGHT_DIFF), 2))
-        self.assertEqual(0.28,round(imgcompare.image_diff_percent(PNG_CAT, PNG_CAT_SLIGHT_DIFF), 2))
+        self.assertEqual(0.34, round(imgcompare.image_diff_percent(JPG_CAT, JPG_CAT_SLIGHT_DIFF), 2))
+        self.assertEqual(0.28, round(imgcompare.image_diff_percent(PNG_CAT, PNG_CAT_SLIGHT_DIFF), 2))
 
         # diffing jpg with png results in a lot different results
-        self.assertEqual(15.96,round(imgcompare.image_diff_percent(JPG_CAT, PNG_CAT_SLIGHT_DIFF), 2))
-        self.assertEqual(15.96,round(imgcompare.image_diff_percent(PNG_CAT_SLIGHT_DIFF, JPG_CAT), 2))
+        self.assertEqual(15.96, round(imgcompare.image_diff_percent(JPG_CAT, PNG_CAT_SLIGHT_DIFF), 2))
+        self.assertEqual(15.96, round(imgcompare.image_diff_percent(PNG_CAT_SLIGHT_DIFF, JPG_CAT), 2))
 
     def test_black_white_image_diff(self):
-        self.assertEqual(27.58,round(imgcompare.image_diff_percent(JPG_CAT, JPG_BLACK), 2))
+        self.assertEqual(27.58, round(imgcompare.image_diff_percent(JPG_CAT, JPG_BLACK), 2))
         self.assertEqual(72.07, round(imgcompare.image_diff_percent(JPG_CAT, JPG_WHITE), 2))
         self.assertEqual(55.15, round(imgcompare.image_diff_percent(JPG_CAT, JPG_HALF_BW), 2))
 
-        self.assertEqual( 11.63, round(imgcompare.image_diff_percent(PNG_CAT, PNG_BLACK_RGB), 2))
-        self.assertEqual(88.04,round(imgcompare.image_diff_percent(PNG_CAT, PNG_WHITE_RGB), 2))
-        self.assertEqual(53.46,round(imgcompare.image_diff_percent(PNG_CAT, PNG_HALF_BW_RGB), 2))
+        self.assertEqual(11.63, round(imgcompare.image_diff_percent(PNG_CAT, PNG_BLACK_RGB), 2))
+        self.assertEqual(88.04, round(imgcompare.image_diff_percent(PNG_CAT, PNG_WHITE_RGB), 2))
+        self.assertEqual(53.46, round(imgcompare.image_diff_percent(PNG_CAT, PNG_HALF_BW_RGB), 2))
 
     def test_is_equal(self):
         self.assertTrue(imgcompare.is_equal(JPG_CAT, JPG_CAT_SLIGHT_DIFF, 0.5))
