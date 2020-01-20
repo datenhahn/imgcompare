@@ -65,7 +65,7 @@ class ImageCompareTest(unittest.TestCase):
         PNG_HALF_BW_RGB.close()
 
     def test_version(self):
-        self.assertEqual("2.0.0", imgcompare.__version__)
+        self.assertEqual("2.0.1", imgcompare.__version__)
 
     def test_thresholds(self):
         self.assertEqual(0, imgcompare.image_diff_percent(JPG_BLACK, JPG_BLACK))

@@ -40,6 +40,6 @@ setup(
         'Programming Language :: Python :: 3.8'
     ],
     license='MIT',
-    python_requires='>3.5',
+    python_requires='>=3.5',
     install_requires=['pillow>=7.0.0']
 )
