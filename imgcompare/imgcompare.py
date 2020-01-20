@@ -137,23 +137,35 @@ def image_diff_percent(image_a, image_b):
 
     # if paths instead of image instances where passed in
     # load the images
+
+    # don't close images if they were not opened inside our function
+    close_a = False
+    close_b = False
     if isinstance(image_a, str):
         image_a = Image.open(image_a)
+        close_a = True
 
     if isinstance(image_b, str):
         image_b = Image.open(image_b)
+        close_b = True
 
-    # first determine difference of input images
-    input_images_histogram_diff = image_diff(image_a, image_b)
+    try:
+        # first determine difference of input images
+        input_images_histogram_diff = image_diff(image_a, image_b)
 
-    # to get the worst possible difference use a black and a white image
-    # of the same size and diff them
+        # to get the worst possible difference use a black and a white image
+        # of the same size and diff them
 
-    black_reference_image = Image.new('RGB', image_a.size, (0, 0, 0))
-    white_reference_image = Image.new('RGB', image_a.size, (255, 255, 255))
+        black_reference_image = Image.new('RGB', image_a.size, (0, 0, 0))
+        white_reference_image = Image.new('RGB', image_a.size, (255, 255, 255))
 
-    worst_bw_diff = image_diff(black_reference_image, white_reference_image)
+        worst_bw_diff = image_diff(black_reference_image, white_reference_image)
 
-    percentage_histogram_diff = (input_images_histogram_diff / float(worst_bw_diff)) * 100
+        percentage_histogram_diff = (input_images_histogram_diff / float(worst_bw_diff)) * 100
+    finally:
+        if close_a:
+            image_a.close()
+        if close_b:
+            image_b.close()
 
     return percentage_histogram_diff
